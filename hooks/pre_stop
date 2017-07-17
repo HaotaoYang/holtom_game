@@ -1,3 +1,0 @@
-#!/bin/bash
-
-game_server eval "holtom_game_app:stop(stop)."
