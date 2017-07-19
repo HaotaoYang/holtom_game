@@ -67,7 +67,7 @@ handle_cast(Msg, State) ->
     {noreply, State}.
 
 handle_info({'ON_CLOCKING_JOB', {H, M, S}}, State) ->
-    ?DEBUG("clock ~p is triggerid...", [{H, M, S}]),
+    ?DEBUG("clock ~p is triggered...", [{H, M, S}]),
     handle_clocking_job({H, M, S}),
     ClockInterval = tools:get_next_day_interval(H, M, S),
     erlang:send_after(ClockInterval * 1000, self(), {'ON_CLOCKING_JOB', {H, M, S}}),
