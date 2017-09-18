@@ -9,9 +9,7 @@
   ]},
   {applications,
    [kernel,
-    stdlib,
-    lager,
-    ranch
+    stdlib
    ]},
   {env,[]},
   {modules, []},
