@@ -1,8 +1,6 @@
--name holtom_game@127.0.0.1
-## -name holtom_game@${NODE_NAME_SUFFIX}
+-name holtom_game@${NODE_NAME_SUFFIX}
 
 -setcookie holtom_game_cookie
-## -setcookie ${COOKIE}
 
 ## -hidden
 
