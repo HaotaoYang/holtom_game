@@ -26,6 +26,12 @@ run:							## 运行（在发布后运行，代替_build/default/rel/<release>/b
 tar:							## 打包
 	@rebar3 tar
 
+appup_gen:						## 版本更新生成.appup文件（需要安装rebar3_appup_plugin）
+	@rebar3 appup generate
+
+relup_tar:						## 版本更新打包（需要安装rebar3_appup_plugin）
+	@rebar3 relup tar
+
 prod_compile:					## 编译（生产环境）
 	@rebar3 as prod compile
 
@@ -34,6 +40,12 @@ prod_release:					## 发布（生产环境）
 
 prod_tar:						## 打包（生产环境）
 	@rebar3 as prod tar
+
+prod_appup_gen:					## 版本更新生成.appup文件（需要安装rebar3_appup_plugin）（生产环境）
+	@rebar3 as prod appup generate
+
+prod_relup_tar:					## 版本更新打包（需要安装rebar3_appup_plugin）（生产环境）
+	@rebar3 as prod relup tar
 
 ## ============================================
 ## private
