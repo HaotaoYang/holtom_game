@@ -13,5 +13,7 @@ erl_crash.dump
 .rebar
 logs
 _build
+apps/holtom_game/include/proto
+apps/holtom_game/src/proto
 .idea
 rebar3.crashdump
