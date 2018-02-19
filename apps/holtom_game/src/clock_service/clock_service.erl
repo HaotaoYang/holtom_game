@@ -59,11 +59,11 @@ init([]) ->
     {ok, #state{}}.
 
 handle_call(Msg, _From, State) ->
-    ?ERROR("receive a unknown call msg: ~p", [Msg]),
+    ?ERROR("receive an unknown call msg: ~p", [Msg]),
     {reply, ok, State}.
 
 handle_cast(Msg, State) ->
-    ?ERROR("receive a unknown cast msg: ~p", [Msg]),
+    ?ERROR("receive an unknown cast msg: ~p", [Msg]),
     {noreply, State}.
 
 handle_info({'ON_CLOCKING_JOB', {H, M, S}}, State) ->
@@ -73,7 +73,7 @@ handle_info({'ON_CLOCKING_JOB', {H, M, S}}, State) ->
     erlang:send_after(ClockInterval * 1000, self(), {'ON_CLOCKING_JOB', {H, M, S}}),
     {noreply, State};
 handle_info(Info, State) ->
-    ?ERROR("receive a unknown info mag ~p", [Info]),
+    ?ERROR("receive an unknown info mag: ~p", [Info]),
     {noreply, State}.
 
 terminate(Reason, _State) ->

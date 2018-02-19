@@ -1,12 +1,14 @@
 %%%-------------------------------------------------------------------
-%% @doc holtom_game top level supervisor.
+%% @Module  : src/web_socket/web_socket_sup.erl
+%% @Author  : Holtom
+%% @Email   : 520023290@qq.com
+%% @Created : 日 12/31 22:42:34 2017
+%% @doc 
 %% @end
 %%%-------------------------------------------------------------------
--module(holtom_game_sup).
+-module(web_socket_sup).
 
--behaviour(supervisor).
-
--include("log.hrl").
+-behavisor(supervisor).
 
 %% API
 -export([start_link/0]).
@@ -17,7 +19,7 @@
 -define(SERVER, ?MODULE).
 
 %%====================================================================
-%% API functions
+%% API
 %%====================================================================
 start_link() ->
     supervisor:start_link({local, ?SERVER}, ?MODULE, []).
@@ -26,10 +28,22 @@ start_link() ->
 %% Supervisor callbacks
 %%====================================================================
 init([]) ->
-    web_socket_sup:start_link(),
-    clock_service_sup:start_link(),
-    player_sup:start_link(),
-    {ok, {{one_for_all, 0, 1}, []}}.
+    {
+        ok,
+        {
+            {one_for_one, 10, 10},
+            [
+                {
+                    web_socket_connector,
+                    {web_socket_connector, start_link, []},
+                    transient,
+                    2000,
+                    worker,
+                    [web_socket_connector]
+                }
+            ]
+        }
+    }.
 
 %%====================================================================
 %% Internal functions

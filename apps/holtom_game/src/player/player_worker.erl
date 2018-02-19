@@ -51,14 +51,14 @@ init(Socket) -> % when is_port(Socket) ->
     {ok, #state{socket = Socket}}.
 
 handle_call(Msg, _From, State) ->
-    ?ERROR("receive a unknown call msg: ~p", [Msg]),
+    ?ERROR("receive an unknown call msg: ~p", [Msg]),
     {reply, ok, State}.
 
 handle_cast({'ON_CLOCKING_JOB', {H, M, S}}, State) ->
     lists:foreach(fun(Mod) -> Mod:on_clocking_job({H, M, S}) end, ?PLAYER_MODS),
     {noreply, State};
 handle_cast(Msg, State) ->
-    ?ERROR("receive a unknown cast msg: ~p", [Msg]),
+    ?ERROR("receive an unknown cast msg: ~p", [Msg]),
     {noreply, State}.
 
 handle_info(Info, State) ->
@@ -74,7 +74,7 @@ handle_info(Info, State) ->
         {'EXIT', _Pid, _R} ->
             {stop, normal, State};
         _ ->
-            ?ERROR("receive a unknown info mag ~p", [Info]),
+            ?ERROR("receive an unknown info mag: ~p", [Info]),
             {noreply, State}
     end.
 
