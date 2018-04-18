@@ -47,6 +47,7 @@ on_clocking_job({H, M, S}) ->
 %%====================================================================
 init(Socket) -> % when is_port(Socket) ->
     ?DEBUG("player_worker start...~p", [Socket]),
+    process_flag(trap_exit, true),
     rand:seed(exs1024, os:timestamp()),
     {ok, #state{socket = Socket}}.
 

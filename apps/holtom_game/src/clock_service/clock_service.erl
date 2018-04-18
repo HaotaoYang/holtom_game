@@ -43,6 +43,7 @@ start_link() ->
 %%====================================================================
 init([]) ->
     ?DEBUG("clock serivce start..."),
+    process_flag(trap_exit, true),
     lists:foreach(
         fun({H, M, S}) ->
             ClockInterval = tools:get_today_passed_seconds({H, M, S}) - tools:get_today_passed_seconds(),
