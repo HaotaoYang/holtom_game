@@ -1,10 +1,18 @@
 {"1.1.0",
-[{<<"goldrush">>,{pkg,<<"goldrush">>,<<"0.1.9">>},1},
- {<<"lager">>,{pkg,<<"lager">>,<<"3.5.1">>},0},
- {<<"ranch">>,{pkg,<<"ranch">>,<<"1.4.0">>},0}]}.
+[{<<"cowboy">>,{pkg,<<"cowboy">>,<<"2.0.0">>},0},
+ {<<"cowlib">>,{pkg,<<"cowlib">>,<<"2.0.1">>},1},
+ {<<"goldrush">>,{pkg,<<"goldrush">>,<<"0.1.9">>},2},
+ {<<"lager">>,{pkg,<<"lager">>,<<"3.6.2">>},1},
+ {<<"new_lager">>,
+  {git,"https://github.com/HaotaoYang/new_lager.git",
+       {ref,"a2e664393d17378714173d69f32724369bbfaf3a"}},
+  0},
+ {<<"ranch">>,{pkg,<<"ranch">>,<<"1.4.0">>},1}]}.
 [
 {pkg_hash,[
+ {<<"cowboy">>, <<"A3B680BCC1156C6FBCB398CC56ADC35177037012D7DC28D8F7E7926D6C243561">>},
+ {<<"cowlib">>, <<"4DFFFB1DB296EAB9F2E8B95EE3017007F674BC920CE30AEB5A53BBDA82FC38C0">>},
  {<<"goldrush">>, <<"F06E5D5F1277DA5C413E84D5A2924174182FB108DABB39D5EC548B27424CD106">>},
- {<<"lager">>, <<"63897A61AF646C59BB928FEE9756CE8BDD02D5A1A2F3551D4A5E38386C2CC071">>},
+ {<<"lager">>, <<"2C72950A0E75FFD927DD35BC85EA30E7680A264C4BBD08B328250871AC456CC2">>},
  {<<"ranch">>, <<"10272F95DA79340FA7E8774BA7930B901713D272905D0012B06CA6D994F8826B">>}]}
 ].
