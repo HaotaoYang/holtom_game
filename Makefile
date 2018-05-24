@@ -4,10 +4,14 @@ deps:							## 获取依赖包
 compile:						## 编译
 	@rebar3 compile
 
+upgrade:
+	@rebar3 upgrade				## 升级deps
+
 clean:							## 只清除项目beam文件
 	@rebar3 clean
 
 clean_all: clean				## 清除所有生成的文件，包括依赖包和日志
+	@rm -rf rebar.lock
 	@rm -rf _build
 	@rm -rf log
 

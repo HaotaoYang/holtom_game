@@ -5,7 +5,7 @@
  {<<"lager">>,{pkg,<<"lager">>,<<"3.6.2">>},1},
  {<<"new_lager">>,
   {git,"https://github.com/HaotaoYang/new_lager.git",
-       {ref,"a2e664393d17378714173d69f32724369bbfaf3a"}},
+       {ref,"628ed059140bda21fc60b1f62a6376a95bb91056"}},
   0},
  {<<"ranch">>,{pkg,<<"ranch">>,<<"1.4.0">>},1}]}.
 [
