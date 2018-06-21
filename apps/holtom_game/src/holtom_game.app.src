@@ -1,20 +1,30 @@
-{application, holtom_game,
- [{description, "An OTP application"},
-  {vsn, "0.1.0"},
-  {registered, []},
-  {mod, {holtom_game_app, []}},
-  {start_phases, [
-    {test1, []},
-    {test2, []}
-  ]},
-  {applications,
-   [kernel,
-    stdlib
-   ]},
-  {env,[]},
-  {modules, []},
+{
+    application,
+    holtom_game,
+    [
+        {description, "An OTP application"},
+        {vsn, "0.1.0"},
+        {registered, []},
+        {mod, {holtom_game_app, []}},
+        {start_phases, [
+            {test1, []},
+            {test2, []}
+        ]},
+        {applications, [
+            kernel,
+            stdlib,
+            sasl,
+            ssl,
+            crypto,
+            cowboy,
+            new_lager
+        ]},
+        {include_application, []},
+        {env,[]},
+        {modules, []},
 
-  {maintainers, []},
-  {licenses, ["Apache 2.0"]},
-  {links, []}
- ]}.
+        {maintainers, []},
+        {licenses, ["Apache 2.0"]},
+        {links, []}
+    ]
+}.
