@@ -3,9 +3,9 @@
  {<<"cowlib">>,{pkg,<<"cowlib">>,<<"2.0.1">>},1},
  {<<"goldrush">>,{pkg,<<"goldrush">>,<<"0.1.9">>},2},
  {<<"lager">>,{pkg,<<"lager">>,<<"3.6.3">>},1},
- {<<"new_lager">>,
-  {git,"https://github.com/HaotaoYang/new_lager.git",
-       {ref,"1d10ed1f6c5bc5448ab776ee5f8ec6e88ec1aa06"}},
+ {<<"lager_daily_rotation_file_backend">>,
+  {git,"https://github.com/HaotaoYang/lager_daily_rotation_file_backend.git",
+       {ref,"4734b2ca5edb3c8a07377b7529a539e54769e82c"}},
   0},
  {<<"ranch">>,{pkg,<<"ranch">>,<<"1.4.0">>},1},
  {<<"sync">>,{pkg,<<"sync">>,<<"0.1.3">>},0}]}.

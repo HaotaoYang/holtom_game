@@ -17,7 +17,7 @@
             ssl,
             crypto,
             cowboy,
-            new_lager
+            lager_daily_rotation_file_backend
         ]},
         {include_application, []},
         {env,[]},
