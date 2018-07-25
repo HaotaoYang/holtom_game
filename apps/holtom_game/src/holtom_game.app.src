@@ -3,7 +3,7 @@
     holtom_game,
     [
         {description, "An OTP application"},
-        {vsn, "0.1.0"},
+        {vsn, "1.0.0"},
         {registered, []},
         {mod, {holtom_game_app, []}},
         {start_phases, [
