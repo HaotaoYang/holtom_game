@@ -1,18 +1,25 @@
+APP_NAME=holtom_game
+APP_VSN=$(shell awk '/release_vsn/{ print $$1 }' rebar.config | tr -d \")
+
+###===================================================================
+### build
+###===================================================================
+.PHONY: deps compile clean clean_all shell auto release run tar appup_gen relup_tar prod_compile prod_release prod_tar prod_appup_gen prod_relup_tar
+
 deps:							## 获取依赖包
 	@rebar3 get-deps
 
 compile:						## 编译
 	@rebar3 compile
 
-upgrade:
-	@rebar3 upgrade				## 升级deps
+upgrade:						## 升级deps
+	@rebar3 upgrade
 
 clean:							## 只清除项目beam文件
 	@rebar3 clean
 
 clean_all: clean				## 清除所有生成的文件，包括依赖包和日志
-	@rm -rf rebar.lock
-	@rm -rf _build
+	@rebar3 clean -a
 	@rm -rf log
 
 shell:							## 运行（编译之后即可运行）
@@ -51,13 +58,16 @@ prod_appup_gen:					## 版本更新生成.appup文件（需要安装rebar3_appup
 prod_relup_tar:					## 版本更新打包（需要安装rebar3_appup_plugin）（生产环境）
 	@rebar3 as prod relup tar
 
-## ============================================
-## private
-## ============================================
-mk_dir:
-	@if [ -d $(dir) ]; then \
-		echo "mkdir $(dir) ok"; \
-	else \
-		mkdir $(dir); \
-		echo "mkdir $(dir) ok"; \
-	fi;
+###===================================================================
+### release
+###===================================================================
+.PHONY: prod
+
+prod:
+	@rebar3 as prod tar
+	@test -d tars/prod || mkdir -p tars/prod
+	@cp ./_build/prod/rel/$(APP_NAME)/$(APP_NAME)-$(APP_VSN).tar.gz ./tars/prod/$(APP_NAME)-$(APP_VSN).tar.gz
+
+###===================================================================
+### private
+###===================================================================
