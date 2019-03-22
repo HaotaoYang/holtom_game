@@ -61,12 +61,17 @@ prod_relup_tar:					## 版本更新打包（需要安装rebar3_appup_plugin）�
 ###===================================================================
 ### release
 ###===================================================================
-.PHONY: prod
+.PHONY: dev prod
+
+dev:
+	@rebar3 as dev tar
+	@test -d tars/dev || mkdir -p tars/dev
+	@cp ./_build/dev/rel/$(APP_NAME)/$(APP_NAME)-$(APP_VSN).tar.gz ./tars/dev/dev-$(APP_NAME)-$(APP_VSN).tar.gz
 
 prod:
 	@rebar3 as prod tar
 	@test -d tars/prod || mkdir -p tars/prod
-	@cp ./_build/prod/rel/$(APP_NAME)/$(APP_NAME)-$(APP_VSN).tar.gz ./tars/prod/$(APP_NAME)-$(APP_VSN).tar.gz
+	@cp ./_build/prod/rel/$(APP_NAME)/$(APP_NAME)-$(APP_VSN).tar.gz ./tars/prod/prod-$(APP_NAME)-$(APP_VSN).tar.gz
 
 ###===================================================================
 ### private

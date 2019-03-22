@@ -15,6 +15,7 @@ logs
 _build
 apps/holtom_game/include/proto
 apps/holtom_game/src/proto
+tars/
 .idea
 rebar3.crashdump
 tags
