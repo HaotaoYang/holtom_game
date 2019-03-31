@@ -1,5 +1,7 @@
--ifndef(__TIME_HRL__).
--define(__TIME_HRL__, true).
+-ifndef(__COMMON_HRL__).
+-define(__COMMON_HRL__, true).
+
+-include_lib("lager_daily_rotation_file_backend/include/log.hrl").
 
 -define(TIMESTAMP,          erlang:system_time(second)).
 -define(MILLI_TIMESTAMP,    erlang:system_time(millisecond)).

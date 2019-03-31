@@ -1,20 +1,20 @@
 {"1.1.0",
-[{<<"cowboy">>,{pkg,<<"cowboy">>,<<"2.0.0">>},0},
- {<<"cowlib">>,{pkg,<<"cowlib">>,<<"2.0.1">>},1},
+[{<<"cowboy">>,{pkg,<<"cowboy">>,<<"2.6.1">>},0},
+ {<<"cowlib">>,{pkg,<<"cowlib">>,<<"2.7.0">>},1},
  {<<"goldrush">>,{pkg,<<"goldrush">>,<<"0.1.9">>},2},
  {<<"lager">>,{pkg,<<"lager">>,<<"3.6.3">>},1},
  {<<"lager_daily_rotation_file_backend">>,
   {git,"https://github.com/HaotaoYang/lager_daily_rotation_file_backend.git",
-       {ref,"3c3c26c7c8ef1b5a627ca066cd13287180df6156"}},
+       {ref,"2735bba9d35b741d44f62742c1eceb9f15a2878c"}},
   0},
- {<<"ranch">>,{pkg,<<"ranch">>,<<"1.4.0">>},1},
+ {<<"ranch">>,{pkg,<<"ranch">>,<<"1.7.1">>},1},
  {<<"sync">>,{pkg,<<"sync">>,<<"0.1.3">>},0}]}.
 [
 {pkg_hash,[
- {<<"cowboy">>, <<"A3B680BCC1156C6FBCB398CC56ADC35177037012D7DC28D8F7E7926D6C243561">>},
- {<<"cowlib">>, <<"4DFFFB1DB296EAB9F2E8B95EE3017007F674BC920CE30AEB5A53BBDA82FC38C0">>},
+ {<<"cowboy">>, <<"F2E06F757C337B3B311F9437E6E072B678FCD71545A7B2865BDAA154D078593F">>},
+ {<<"cowlib">>, <<"3EF16E77562F9855A2605900CEDB15C1462D76FB1BE6A32FC3AE91973EE543D2">>},
  {<<"goldrush">>, <<"F06E5D5F1277DA5C413E84D5A2924174182FB108DABB39D5EC548B27424CD106">>},
  {<<"lager">>, <<"FE78951D174616273F87F0DBC3374D1430B1952E5EFC4E1C995592D30A207294">>},
- {<<"ranch">>, <<"10272F95DA79340FA7E8774BA7930B901713D272905D0012B06CA6D994F8826B">>},
+ {<<"ranch">>, <<"6B1FAB51B49196860B733A49C07604465A47BDB78AA10C1C16A3D199F7F8C881">>},
  {<<"sync">>, <<"C5785FE1311542B76355F403B8E0B35E30DBBEE1F5E89968748CEA4D0A20D289">>}]}
 ].

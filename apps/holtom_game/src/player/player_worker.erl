@@ -10,7 +10,7 @@
 
 -behaviour(gen_server).
 
--include("log.hrl").
+-include("common.hrl").
 -include("player.hrl").
 
 -export([
