@@ -19,7 +19,15 @@
 %% API
 %%====================================================================
 start(_StartType, _StartArgs) ->
-    holtom_game_sup:start_link().
+    ok = pre_start(),
+    case holtom_game_sup:start_link() of
+        {ok, Pid} ->
+            ok = post_start(),
+            {ok, Pid};
+        Error ->
+            ?ERROR("start application error, Error:~p", [Error]),
+            ok
+    end.
 
 start_phase(_Arg, _Type, []) ->
     ?DEBUG("start phase Arg:~p", [_Arg]),
@@ -32,3 +40,6 @@ stop(_State) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
+pre_start() -> ok.
+
+post_start() -> ok.
