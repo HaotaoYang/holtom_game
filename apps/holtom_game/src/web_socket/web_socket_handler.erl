@@ -10,21 +10,17 @@
 
 
 init(Req, _Opts) ->
-    ?DEBUG("0000000 init, Req:~p, _Opts:~p, self_pid:~p", [Req, _Opts, self()]),
     #{peer := {Ip, _Port}} = Req,
     State = #{
-        ip => Ip,
-        login => 0,
-        user_pid => none
+        ip => Ip
     },
     {cowboy_websocket, Req, State}.
 
 websocket_init(State) ->
-    ?DEBUG("11111111111 websocket_init, self_pid:~p, state: ~p", [self(), State]),
+    player_sup:start_child(self()),
     {ok, State}.
 
-websocket_handle({text, Msg}, State) ->
-    ?DEBUG("2222222 websocket_handle, self_pid:~p, ~p", [self(), Msg]),
+websocket_handle({text, _Msg}, State) ->
     % case Msg of
     %     <<"1">> ->
     %         websocket_parse:encode_proto(#loginReq{});
@@ -34,7 +30,6 @@ websocket_handle({text, Msg}, State) ->
     % websocket_handle({binary, Msg}, State),
     {reply, {text, list_to_binary("aaa")}, State};
 websocket_handle({binary, Msg}, State) ->
-    ?DEBUG("333333333 ~p", [Msg]),
     <<Cmd:16, _Bin/binary>> = Msg,
     #{ip := _Ip, login := Login, user_pid := _UserPid} = State,
     ?DEBUG("Clinet Cmd:~p, login stata:~p~n", [Cmd, Login]),
@@ -54,15 +49,12 @@ websocket_handle({binary, Msg}, State) ->
     %         {ok, State}
     % end;
 websocket_handle(_Data, State) ->
-    ?ERROR("444444444 ~p", [_Data]),
     {ok, State}.
 
 websocket_info({timeout, Msg}, State) ->
-    ?DEBUG("555555555 ~p", [Msg]),
     {reply, {text, Msg}, State};
 
 websocket_info({send_text, Msg}, State) ->
-    ?DEBUG("send_text: ~p", [Msg]),
     {reply, {text, Msg}, State};
 
 websocket_info({send_binary, Msg}, State) ->
@@ -71,7 +63,6 @@ websocket_info({send_binary, Msg}, State) ->
 websocket_info(_Info, State) ->
     {ok, State}.
 
-terminate(_Reason, _Req, #{user_pid := UserPid} = State) ->
-    ?DEBUG("66666666 webscoket terminate ~p", [{_Reason, State}]),
+terminate(_Reason, _Req, #{user_pid := UserPid}) ->
     login:login_lost(UserPid, quit),
     ok.
