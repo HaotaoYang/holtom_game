@@ -1,0 +1,16 @@
+# -name holtom_game@${NODE_NAME_SUFFIX}
+-name holtom_game_local@127.0.0.1
+
+-setcookie holtom_game_cookie_local
+
+## -hidden
+
++K true
++A 5
+
++P 134217727
+
+## -env ERL_MAX_PORTS 32768
+## +Q 134217727
+
+## -env ERL_MAX_ETS_TABLES 10000
