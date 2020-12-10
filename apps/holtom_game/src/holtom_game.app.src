@@ -17,6 +17,7 @@
             ssl,
             crypto,
             cowboy,
+            gproc,
             lager_daily_rotation_file_backend
         ]},
         {include_application, []},

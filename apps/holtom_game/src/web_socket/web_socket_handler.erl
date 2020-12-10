@@ -63,6 +63,6 @@ websocket_info({send_binary, Msg}, State) ->
 websocket_info(_Info, State) ->
     {ok, State}.
 
-terminate(_Reason, _Req, #{user_pid := UserPid}) ->
-    login:login_lost(UserPid, quit),
+terminate(_Reason, _Req, #{user_pid := _UserPid}) ->
+    % login:login_lost(UserPid, quit),
     ok.
