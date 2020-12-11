@@ -5,15 +5,19 @@
 
 ## -hidden
 
+## 开启epoll
 +K true
 
+## 异步线程池，为某些port调用服务
 +A 100
 
+## 最大port数
+# +Q 134217727
+
+## 开启port并行调度队列，增加系统吞吐量（会增加部分延迟）
 +spp true
 
-+P 134217727
-
--env ERL_MAX_PORTS 32768
-## +Q 134217727
+## 最大进程数
++P 1024000
 
 -env ERL_MAX_ETS_TABLES 10000
