@@ -10,7 +10,7 @@
             {test1, []},
             {test2, []}
         ]},
-        {applications, [
+        {applications, [    %% 启动app之前，将会首先启动此列表的app
             kernel,
             stdlib,
             sasl,
@@ -20,7 +20,7 @@
             gproc,
             lager_daily_rotation_file_backend
         ]},
-        {include_application, []},
+        {include_application, []},  %% 指定子app，只加载，不启动
         {env,[]},
         {modules, []},
 
