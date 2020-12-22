@@ -17,8 +17,8 @@
     on_clocking_job/1,
     get_global_player_pid/1,
     get_local_player_pid/1,
-    list_global_player/0,
-    list_local_player/0
+    list_global_players/0,
+    list_local_players/0
 ]).
 
 -export([
@@ -43,7 +43,7 @@ start_link(Socket) ->
     gen_server:start_link({global, ?PLAYER_GLOBAL_NAME(Socket)}, ?MODULE, Socket, []).
 
 on_clocking_job({H, M, S}) ->
-    LocalPlayerList = list_local_player(),
+    LocalPlayerList = list_local_players(),
     [gen_server:cast(Pid, {'ON_CLOCKING_JOB', {H, M, S}}) || {_, Pid, _, _} <- LocalPlayerList].
 
 get_global_player_pid(Name) ->
@@ -52,10 +52,10 @@ get_global_player_pid(Name) ->
 get_local_player_pid(Name) ->
     gproc:lookup_local_name(?PLAYER_LOCAL_NAME(Name)).
 
-list_global_player() ->
+list_global_players() ->
     global:registered_names().
 
-list_local_player() ->
+list_local_players() ->
     supervisor:which_children(player_sup).
 
 %%====================================================================
