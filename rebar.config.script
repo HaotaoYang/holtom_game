@@ -1,0 +1,9 @@
+%% -*- mode: erlang;erlang-indent-level: 4;indent-tabs-mode: nil -*-
+%% exl ts=4 sw=4 ft=erlang et
+
+%% 此脚本可以对 rebar.config 进行动态修改，最后返回最新的配置
+
+% 打印当前 rebar.config 的配置内容
+% rebar_api:info("~n~p", [CONFIG]),
+
+CONFIG.
