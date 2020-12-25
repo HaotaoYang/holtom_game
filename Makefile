@@ -22,6 +22,9 @@ clean_all: clean				## 清除所有生成的文件，包括依赖包和日志
 	@./rebar3 clean -a
 	@rm -rf log
 
+tree:
+	@./rebar3 tree 				## 输出项目树结构
+
 shell:							## 运行（编译之后即可运行）
 	@./rebar3 shell
 
