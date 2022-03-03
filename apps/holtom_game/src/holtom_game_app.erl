@@ -6,7 +6,7 @@
 
 -behaviour(application).
 
--include("log.hrl").
+-include("common.hrl").
 
 %% Application callbacks
 -export([

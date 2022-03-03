@@ -1,6 +1,6 @@
 -module(web_socket_handler).
 
--include("log.hrl").
+-include("common.hrl").
 
 -export([init/2]).
 -export([websocket_init/1]).

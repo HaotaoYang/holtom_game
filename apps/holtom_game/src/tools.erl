@@ -8,7 +8,7 @@
 %%%-------------------------------------------------------------------
 -module(tools).
 
--include("time.hrl").
+-include("common.hrl").
 
 -export([
     get_env/3,
