@@ -13,4 +13,6 @@
 -define(SECONDS_PER_HOUR,   3600).
 -define(SECONDS_PER_DAY,    86400).
 
+-define(APP_NAME, holtom_game).
+
 -endif.
