@@ -1,4 +1,4 @@
-{"1.1.0",
+{"1.2.0",
 [{<<"cowboy">>,{pkg,<<"cowboy">>,<<"2.6.1">>},0},
  {<<"cowlib">>,{pkg,<<"cowlib">>,<<"2.7.3">>},1},
  {<<"eetcd">>,
@@ -9,13 +9,13 @@
  {<<"gproc">>,{pkg,<<"gproc">>,<<"0.8.0">>},0},
  {<<"gun">>,{pkg,<<"gun">>,<<"1.3.1">>},1},
  {<<"lager">>,{pkg,<<"lager">>,<<"3.6.3">>},1},
- {<<"lager_daily_rotation_file_backend">>,
-  {git,"https://github.com/HaotaoYang/lager_daily_rotation_file_backend.git",
-       {ref,"2735bba9d35b741d44f62742c1eceb9f15a2878c"}},
+ {<<"new_lager">>,
+  {git,"https://github.com/HaotaoYang/new_lager.git",
+       {ref,"c9bdf4c6f1179b0cd6a19ba5ad7298a2b562cfb7"}},
   0},
  {<<"observer_cli">>,{pkg,<<"observer_cli">>,<<"1.5.4">>},0},
  {<<"ranch">>,{pkg,<<"ranch">>,<<"1.7.1">>},1},
- {<<"recon">>,{pkg,<<"recon">>,<<"2.5.1">>},1},
+ {<<"recon">>,{pkg,<<"recon">>,<<"2.5.3">>},1},
  {<<"sync">>,{pkg,<<"sync">>,<<"0.1.3">>},0}]}.
 [
 {pkg_hash,[
@@ -27,6 +27,17 @@
  {<<"lager">>, <<"FE78951D174616273F87F0DBC3374D1430B1952E5EFC4E1C995592D30A207294">>},
  {<<"observer_cli">>, <<"E8489B3A7C77C2155C0B67FA9F90D9AFA76BF15C24FB7B312ADDCC117771D154">>},
  {<<"ranch">>, <<"6B1FAB51B49196860B733A49C07604465A47BDB78AA10C1C16A3D199F7F8C881">>},
- {<<"recon">>, <<"430FFA60685AC1EFDFB1FE4C97B8767C92D0D92E6E7C3E8621559BA77598678A">>},
- {<<"sync">>, <<"C5785FE1311542B76355F403B8E0B35E30DBBEE1F5E89968748CEA4D0A20D289">>}]}
+ {<<"recon">>, <<"739107B9050EA683C30E96DE050BC59248FD27EC147696F79A8797FF9FA17153">>},
+ {<<"sync">>, <<"C5785FE1311542B76355F403B8E0B35E30DBBEE1F5E89968748CEA4D0A20D289">>}]},
+{pkg_hash_ext,[
+ {<<"cowboy">>, <<"41C14336E40D78D3BB655E76817D9F29DEF522024A5BB53894C27E0AE338CDA0">>},
+ {<<"cowlib">>, <<"1E1A3D176D52DAEBBECBBCDFD27C27726076567905C2A9D7398C54DA9D225761">>},
+ {<<"goldrush">>, <<"99CB4128CFFCB3227581E5D4D803D5413FA643F4EB96523F77D9E6937D994CEB">>},
+ {<<"gproc">>, <<"580ADAFA56463B75263EF5A5DF4C86AF321F68694E7786CB057FD805D1E2A7DE">>},
+ {<<"gun">>, <<"F4D25A6946E34FE5D4D698DB32B0F2A9BBB1E9FD75D23A0FFADBAD373C48451F">>},
+ {<<"lager">>, <<"764C0C8A445DCE31926C2C33ACAB7D514CE4FEDB9390374FE4D0AD72C39F0894">>},
+ {<<"observer_cli">>, <<"F4825D374B22F258AD114A74796B79B86E20A03611051719F6062353C05389CB">>},
+ {<<"ranch">>, <<"451D8527787DF716D99DC36162FCA05934915DB0B6141BBDAC2EA8D3C7AFC7D7">>},
+ {<<"recon">>, <<"6C6683F46FD4A1DFD98404B9F78DCABC7FCD8826613A89DCB984727A8C3099D7">>},
+ {<<"sync">>, <<"8711534A0F7A12B9FCF1C725C12137E2300584BA9FE5CB1A565E7D4AAA94B92C">>}]}
 ].

@@ -3,7 +3,7 @@
 
 -include("player.hrl").
 
--include_lib("lager_daily_rotation_file_backend/include/log.hrl").
+-include_lib("new_lager/include/log.hrl").
 
 -define(TIMESTAMP,          erlang:system_time(second)).
 -define(MILLI_TIMESTAMP,    erlang:system_time(millisecond)).

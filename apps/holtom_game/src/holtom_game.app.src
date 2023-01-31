@@ -21,7 +21,7 @@
             crypto,
             cowboy,
             gproc,
-            lager_daily_rotation_file_backend
+            new_lager
         ]},
         {include_application, []},  %% 指定子app，只加载，不启动
         {env,[]},
