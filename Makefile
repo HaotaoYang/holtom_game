@@ -46,9 +46,6 @@ appup_gen:						## 版本更新生成.appup文件（需要安装rebar3_appup_plu
 relup_tar:						## 版本更新打包（需要安装rebar3_appup_plugin）
 	@./rebar3 relup tar
 
-prod_compile:					## 编译（生产环境）
-	@./rebar3 as prod compile
-
 prod_release:					## 发布（生产环境）
 	@./rebar3 as prod release
 
