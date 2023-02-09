@@ -1,5 +1,5 @@
 APP_NAME=holtom_game
-APP_VSN=$(shell awk '/release_vsn/{ print $$1 }' rebar.config | tr -d \")
+APP_VSN=$(shell awk -F '"' '/release/{print $$2}' rebar.config)
 
 ###===================================================================
 ### build
