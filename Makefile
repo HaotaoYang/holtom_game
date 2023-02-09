@@ -84,3 +84,15 @@ prod:
 ###===================================================================
 ### private
 ###===================================================================
+# 打热更包步骤：
+# 切到旧版本(1.0.0)：
+# 	rebar3 release
+# 切到新版本(1.0.1)：
+# 	rebar3 release
+# 	rebar3 appup generate
+# 	rebar3 relup
+# 	rebar3 tar
+# 
+# 版本热更步骤：
+# 把新打的热更包拷贝至holtom_game/releases/目录：
+# 	bin/holtom_game upgrade 1.0.1
