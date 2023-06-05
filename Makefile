@@ -12,6 +12,9 @@ deps:							## 获取依赖包
 compile:						## 编译
 	@./rebar3 compile
 
+re_compile:						## 编译指定目录的源代码文件
+	@erl -make
+
 upgrade:						## 升级deps
 	@./rebar3 upgrade
 
