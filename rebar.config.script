@@ -7,3 +7,122 @@
 % rebar_api:info("~n~p", [CONFIG]),
 
 CONFIG.
+
+% %%main(CONFIG) ->
+%     % 修改erl_opts
+%     UpdateErlOptsFun =
+%         fun(Config, Fun) ->
+%             case lists:keytake(erl_opts, 1, Config) of
+%                 false ->
+%                     NewErlOpts = Fun([]),
+%                     [{erl_opts, NewErlOpts} | Config];
+%                 {value, {_, ErlOpts}, ConfigT} ->
+%                     NewErlOpts = Fun(ErlOpts),
+%                     [{erl_opts, NewErlOpts} | ConfigT]
+%             end
+%         end,
+% 
+%     % 将设置在erl_first_paths里的目录的erl文件 都加入到erl_first_files
+%     CONFIG_1 =
+%         case proplists:get_value(erl_first_paths, CONFIG) of
+%             undefined -> CONFIG;
+%             ErlFirstPaths ->
+%                 ErlFirstFiles = [filelib:wildcard(filename:join(ErlFirstPath, "*.erl")) || ErlFirstPath <- ErlFirstPaths],
+%                 case lists:keytake(erl_first_files, 1, CONFIG) of
+%                     false ->
+%                         [{erl_first_files, ErlFirstFiles} | CONFIG];
+%                     {value, {_, OldErlFirstFiles}, NewConfig} ->
+%                         [{erl_first_files, OldErlFirstFiles ++ ErlFirstFiles} | NewConfig]
+%                 end
+%         end,
+% 
+%     % 将include_paths包含的路径下所有的头文件路径都加入erl_opts的i路径中
+%     CONFIG_2 =
+%         case proplists:get_value(include_paths, CONFIG_1) of
+%             undefined -> CONFIG_1;
+%             IncludePaths ->
+%                 IncludeFun =
+%                     fun(Include, Fun) ->
+%                         case filelib:is_dir(Include) of
+%                             true ->
+%                                 {ok, AllFileList} = file:list_dir_all(Include),
+%                                 List = [Fun(filename:join(Include, File), Fun) || File <- AllFileList],
+%                                 [{i, Include} | List];
+%                             false -> []
+%                         end
+%                     end,
+%                 NewIncludePaths = [IncludeFun(IncludePath, IncludeFun) || IncludePath <- IncludePaths],
+%                 UpdateErlOptsFun(CONFIG_1, fun(ErlOpts) -> lists:usort(ErlOpts ++ lists:flatten(NewIncludePaths)) end)
+%         end,
+% 
+%     CONFIG_3 =
+%         case lists:keyfind(add_overrides, 1, CONFIG_2) of
+%             false -> CONFIG_2;
+%             {_, AddOverrides} ->
+%                 Overrides = lists:concat([[{add, App, AddOverride} || App <- Apps] || {Apps, AddOverride} <- AddOverrides]),
+%                 OldOverrides = proplists:get_value(overrides, CONFIG_2, []),
+%                 lists:keystore(overrides, 1, CONFIG_2, {overrides, Overrides ++ OldOverrides})
+%         end,
+% 
+%     IsRelup = os:getenv("RELUP_TAR") =/= false,
+%     IsCI = os:getenv("CI_COMMIT_SHA") =/= false,
+%     CentosErlangPath = os:getenv("CENTOS_ERLANG_PATH"),
+%     IsSetErlangPath = CentosErlangPath =/= false,
+% 
+%     ProfileFun =
+%         fun(test, ProfileConfig0) -> {test, ProfileConfig0};
+%             (ProfileName, ProfileConfig0) ->
+%                 ProfileConfig = maps:from_list(ProfileConfig0),
+%                 Relx0 = maps:get(relx, ProfileConfig, []),
+%                 Relx2 =
+%                     case IsCI of
+%                         false -> Relx0;
+%                         _ ->
+%                             Relx1 = lists:keystore(include_erts, 1, Relx0, {include_erts, true}),
+%                             lists:keystore(system_libs, 1, Relx1, {system_libs, true})
+%                     end,
+%                 Relx4 =
+%                     case IsRelup of
+%                         false -> Relx2;
+%                         _ ->
+%                             Relx3 = lists:keystore(include_erts, 1, Relx2, {include_erts, false}),
+%                             lists:keystore(system_libs, 1, Relx3, {system_libs, false})
+%                     end,
+%                 Relx =
+%                     case IsSetErlangPath of
+%                         false -> Relx4;
+%                         _ ->
+%                             Relx5 = lists:keystore(include_erts, 1, Relx4, {include_erts, CentosErlangPath ++ "/centos_erlang"}),
+%                             lists:keystore(system_libs, 1, Relx5, {system_libs, CentosErlangPath ++ "/centos_erlang/lib"})
+%                     end,
+%                 {ProfileName, maps:to_list(ProfileConfig#{relx => Relx})}
+%         end,
+% 
+%     Profiles0 = proplists:get_value(profiles, CONFIG_3),
+%     Profiles = [
+%         ProfileFun(ProfileName, ProfileConfig)
+%         || {ProfileName, ProfileConfig} <- Profiles0],
+%     CONFIG_4 = lists:keystore(profiles, 1, CONFIG_3, {profiles, Profiles}),
+% 
+%     % 将cover_excl_dirs设置的目录下的所有erl文件加入到cover_excl_mods配置 计算覆盖了的时候不会计算到这些模块
+%     LAST_CONFIG =
+%         case lists:keyfind(cover_excl_dirs, 1, CONFIG_4) of
+%             false ->
+%                 CONFIG_4;
+%             {_, CoverExclDirs} ->
+%                 Mods = lists:concat([
+%                     [list_to_atom(filename:basename(File, ".erl"))
+%                         || File <- filelib:wildcard(filename:join([CoverExclDir, "*.erl"]))]
+%                     || CoverExclDir <- CoverExclDirs, filelib:is_dir(CoverExclDir)
+%                 ]),
+%                 case lists:keytake(cover_excl_mods, 1, CONFIG_4) of
+%                     {value, {_, CoverExclMods}, CONFIG_5T} ->
+%                         [{cover_excl_mods, lists:usort(CoverExclMods ++ Mods)} | CONFIG_5T];
+%                     _ ->
+%                         [{cover_excl_mods, Mods} | CONFIG_4]
+%                 end
+%         end,
+% 
+%     %% rebar_api:info("~n~p", [LAST_CONFIG]),
+%     %% rebar_api:info("======================~n~p~n======================", [proplists:get_value(profiles, LAST_CONFIG)]),
+%     LAST_CONFIG.

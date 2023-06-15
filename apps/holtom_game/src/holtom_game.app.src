@@ -21,7 +21,7 @@
             crypto,
             cowboy,
             gproc,
-            new_lager
+            game_base
         ]},
         {include_application, []},  %% 指定子app，只加载，不启动
         {env,[]},
