@@ -40,6 +40,10 @@ stop(_State) ->
 %%====================================================================
 %% Internal functions
 %%====================================================================
-pre_start() -> ok.
+pre_start() ->
+    game_default_config:init_config(),
+    ok.
 
-post_start() -> ok.
+post_start() ->
+
+    ok.
