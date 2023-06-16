@@ -16,7 +16,7 @@
         {applications, [    %% 启动app之前，将会首先启动此列表的app
             game_base
         ]},
-        {include_application, []},  %% 指定子app，只加载，不启动
+        {included_applications, [eetcd]},  %% 指定子app，只加载，不启动
         {env,[]},
         {modules, []},
 
