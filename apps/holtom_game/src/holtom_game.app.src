@@ -14,13 +14,6 @@
             {test2, []}
         ]},
         {applications, [    %% 启动app之前，将会首先启动此列表的app
-            kernel,
-            stdlib,
-            sasl,
-            ssl,
-            crypto,
-            cowboy,
-            gproc,
             game_base
         ]},
         {include_application, []},  %% 指定子app，只加载，不启动
