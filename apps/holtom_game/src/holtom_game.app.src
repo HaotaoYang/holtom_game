@@ -14,7 +14,7 @@
             {test2, []}
         ]},
         {applications, [    %% 启动app之前，将会首先启动此列表的app
-            game_base
+            kernel, stdlib, game_base
         ]},
         {included_applications, [eetcd]},  %% 指定子app，只加载，不启动
         {env,[]},
