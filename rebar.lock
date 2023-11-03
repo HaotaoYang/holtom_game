@@ -13,7 +13,7 @@
   1},
  {<<"game_base">>,
   {git,"https://github.com/HaotaoYang/game_base.git",
-       {ref,"3a82da83f67feecd0553f01faf809fbf529bfb8b"}},
+       {ref,"d6c473adf069fbd964115ab4cde86fb44f41ca00"}},
   0},
  {<<"goldrush">>,{pkg,<<"goldrush">>,<<"0.1.9">>},4},
  {<<"gproc">>,{pkg,<<"gproc">>,<<"0.8.0">>},1},
