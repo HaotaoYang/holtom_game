@@ -7,7 +7,7 @@
 -include("apps/holtom_game/include/common.hrl").
 -include("apps/holtom_game/include/player.hrl").
 
--export([fields_info/1, is_record/1, get_record/1]).
+-export([fields_info/1, is_record/1, get_record/1, map_2_record/2, record_2_map/1]).
 
 %% get all fields name of records
 fields_info(_Other) -> exit({error, "Invalid Record Name"}).
@@ -15,3 +15,11 @@ fields_info(_Other) -> exit({error, "Invalid Record Name"}).
 is_record(_Other) -> false.
 
 get_record(_Other) -> undefined.
+
+map_2_record(Map, RecordName) when is_map(Map) ->
+    RecordFields = fields_info(RecordName),
+    ValueList = [maps:get(Field, Map) || Field <- RecordFields],
+    list_to_tuple([RecordName | ValueList]);
+map_2_record(_, _) -> undefined.
+
+record_2_map(_) -> undefined.
